@@ -2,9 +2,6 @@
 import { createContext, useEffect, useState } from "react";
 import {jwtDecode} from "jwt-decode"; // jwtDecode doğru import edilmeli
 import moment from "moment";
-import { useRouter } from "next/navigation";
-import { getToken } from "@/redux/authSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 export const AuthContext = createContext();
 
@@ -19,7 +16,7 @@ export const AuthProvider = ({ children }) => {
               var decoded = jwtDecode(findToken);
               if (decoded.exp < moment().unix()) {
                 localStorage.removeItem("access-token"); // Remove expired token
-                location.reload()
+                window.location.reload()
               } else {
                 setUserToken(findToken)
               }

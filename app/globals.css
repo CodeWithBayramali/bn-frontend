@@ -20,6 +20,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Simgeleri beyaz yapmak için ters çevirir */
+  opacity: 0.7; /* İsteğe bağlı, simgenin şeffaflık seviyesini değiştirir */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
