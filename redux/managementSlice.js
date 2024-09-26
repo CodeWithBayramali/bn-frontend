@@ -15,9 +15,7 @@ const managementSlice = createSlice({
 })
 
 export const createManagementDispatch = (formData,router) => async(dispatch) => {
-    postGuardRequest({controller:'admin'},formData).then(res=> {
-        console.log(res.data)
-    }).catch(err=> console.log(err))
+    postGuardRequest({controller:'admin'},formData).then().catch(err=> console.log(err))
 }
 
 export const getAllManagementDispatch = (page,size) => async (dispatch) => {

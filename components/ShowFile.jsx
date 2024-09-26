@@ -4,7 +4,6 @@ import { ImCancelCircle } from "react-icons/im";
 
 export default function ShowFile({ fileUrl,setDocUrl }) {
   const [fileSrc, setFileSrc] = React.useState(null);
-  console.log(fileUrl)
   React.useEffect(() => {
     const fetchFile = async () => {
       const session = await getSession(); // JWT Token'ı oturumdan al

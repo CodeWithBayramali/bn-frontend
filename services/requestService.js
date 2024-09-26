@@ -98,7 +98,6 @@ export const deleteGuardRequest = async (
   let url = `${process.env.NEXT_PUBLIC_BACKEND_API}/${requestParameter.controller}${
     requestParameter.action ? `/${requestParameter.action}` : ""
   }${id ? `/${id}` : ""}`;
-  console.log(url)
   return await axios.delete(url, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
