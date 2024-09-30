@@ -27,6 +27,7 @@ export const CreateUserModal = ({open,setOpen}) => {
                 hashedPassword: ''
             }}
             onSubmit={_handleSubmit}
+            validationSchema={createUserValidation}
         >
             {({values,handleChange,handleSubmit,errors})=> (
                 <>

@@ -10,16 +10,20 @@ const adminSlice = createSlice({
     reducers: {
         getUsers: (state,action) => {
             state.users = action.payload
-        },
+        }
     }
 })
 
 export const createUserDispatch = (userData) => async (dispatch) => {
     postJsonGuardRequest({controller:'admin/createUser'},userData)
     .then(res=> {
-        dispatch(getAllUserDispatch())
+        try {
+            dispatch(getAllUserDispatch())
+        } catch (error) {
+            alert(error.respon.data)
+        }
     })
-    .catch(err => console.log(err))
+    .catch(err => alert(err.response.data))
 } 
 
 export const getAllUserDispatch = () => async (dispatch) => {
@@ -35,7 +39,7 @@ export const updateUserDispatch = (id,role) => async (dispatch) => {
 }
 
 export const deleteUserDispatch = (id) => async (dispatch) => {
-    deleteGuardRequest({controller:'admin'},id).then(res=> {
+    deleteGuardRequest({controller:'admin/deleteUser'},id).then(res=> {
         dispatch(getAllUserDispatch())
     })
     .catch(err=> console.log(err))
@@ -47,5 +51,5 @@ export const deleteManagementDispatch = (id) => async (dispatch) => {
     })
 }
 
-export const { getUsers } = adminSlice.actions;
+export const { getUsers, updateUserRole } = adminSlice.actions;
 export default adminSlice.reducer;

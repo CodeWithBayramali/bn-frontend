@@ -9,10 +9,11 @@ export default function ChangeUserRoleModal({ open, setOpen }) {
 
   useEffect(() => {
     dispatch(getAllUserDispatch());
-  }, []);
+  }, [dispatch]);
 
-  const handleChangeRole = (id, roles) => {
-    dispatch(updateUserDispatch(id, roles));
+  const handleChangeRole = async (id, role) => {
+    dispatch(updateUserDispatch(id, role));
+    location.reload()
   };
 
   const deleteUser = (id) => {
@@ -49,19 +50,13 @@ export default function ChangeUserRoleModal({ open, setOpen }) {
               <p className="font-bold">{item.email}</p>
             <span className="flex flex-row items-center gap-x-2">
             <select
-                onChange={(e) =>
+                onChange={(e) =>{
                   handleChangeRole(item.id, Array.of(e.target.value))
-                }
+                }}
                 className="bg-indigo-500 rounded-lg"
               >
-                <option value={item.role} selected>
-                  {item.role}
-                </option>
-
-                {/* Diğer seçeneği dinamik olarak tersini ayarla */}
-                <option value={item.role === "ADMIN" ? "USER" : "ADMIN"}>
-                  {item.role === "ADMIN" ? "USER" : "ADMIN"}
-                </option>
+                <option>{item.role}</option>
+                <option value={item.role === 'USER' ? 'ADMIN':'USER'}>{item.role === 'USER' ? 'ADMIN':'USER'}</option>
               </select>
               {
                 item.email !== 'info@bilisimnoktasi.com.tr' && <button onClick={()=> deleteUser(item.id)} className="text-red-600 underline">Sil</button>
