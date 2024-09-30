@@ -311,7 +311,7 @@ export default function page() {
                 <label>Tarih</label>
                 <input
                   required
-                  className="border-gray-500 border bg-transparent text-white rounded-lg p-2"
+                  className="border-gray-500 border bg-transparent text-gray-400 rounded-lg p-2"
                   id="date"
                   name="date"
                   value={sendData.date}
