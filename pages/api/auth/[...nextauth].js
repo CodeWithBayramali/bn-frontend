@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios from 'axios';
-import { cookies } from 'next/headers';
 
 export const authOptions = {
   logger:false,

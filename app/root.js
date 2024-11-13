@@ -1,9 +1,5 @@
 'use client';
 import { useSession, signIn } from 'next-auth/react';
-import { getCookie, deleteCookie } from 'cookies-next';
-import moment from 'moment';
-import { useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
 
 export default function Root({ children }) {
   const { data: session, status } = useSession();
